@@ -1,5 +1,6 @@
 "le &path.='src/include,/usr/include/AL,'
 
+set modifiable
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -12,12 +13,16 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'preservim/nerdtree'
-Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+Plugin 'airblade/vim-gitgutter'
+" Plugin 'ctrlpvim/ctrlp.vim'
+Plugin 'junegunn/fzf'
 Plugin 'crusoexia/vim-monokai'
 Bundle 'matze/vim-move'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tmsvg/pear-tree'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-markdown'
 Plugin 'zivyangll/git-blame.vim'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'lyuts/vim-rtags'
@@ -26,6 +31,7 @@ Plugin 'tmhedberg/SimpylFold'
 " Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 " Plugin 'vim-airline/vim-airline'
 " Plugin 'vim-airline/vim-airline-themes'
+Plugin 'martinda/Jenkinsfile-vim-syntax'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'tpope/vim-fugitive'
@@ -34,8 +40,12 @@ Plugin 'honza/vim-snippets'
 Plugin 'vim-python/python-syntax'
 Plugin 'pangloss/vim-javascript'
 Plugin 'leafgarland/typescript-vim'
+Plugin 'maxmellon/vim-jsx-pretty'
+Plugin 'herringtondarkholme/yats'
 Plugin 'peitalin/vim-jsx-typescript'
+Plugin 'jparise/vim-graphql'
 Plugin 'dense-analysis/ale'
+Plugin 'sotte/presenting.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -129,7 +139,7 @@ nnoremap <BS> Xh
 filetype indent on
 syntax on
 colorscheme monokai
-set termguicolors
+" set termguicolors
 
 set laststatus=2
 
@@ -231,19 +241,13 @@ let g:ale_linters_explicit=1
 nmap <silent> <leader>j <Plug>(ale_previous_wrap)
 nmap <silent> <leader>k <Plug>(ale_next_wrap)
 
-
-" airline
-" let g:airline#extensions#ale#enabled = 1
-" let g:airline#extensions#virtualenv#enabled = 1
-" let g:airline_inactive_collapse=1
-" let g:airline_powerline_fonts = 1
-" let g:airline_theme = 'dark_minimal'
-" let g:airline#extensions#whitespace#mixed_indent_algo = 1
-" let g:airline#parts#ffenc#skip_expected_string='utf-8[unix]'
-" let g:airline_skip_empty_sections = 1
-" let g:airline_section_c = '%F'
-
 " powerline
 python3 from powerline.vim import setup as powerline_setup
 python3 powerline_setup()
 python3 del powerline_setup
+
+" set qs to js
+au BufRead,BufNewFile *.qs set filetype=javascript
+
+" replace ctrlp with fzf
+nmap <C-P> :FZF<CR>
