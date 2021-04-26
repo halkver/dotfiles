@@ -105,6 +105,12 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias testcode="cd ~/src/testcode && source ~/src/testvenv/bin/activate"
+alias bs="cd ~/src/buildstorage && source ~/src/buildstorage/bsenv/bin/activate"
+alias main="cd ~/src/system-trunk-main"
+alias norway="cd ~/src/connecting-norway"
+alias backend="cd ~/src/connecting-norway/backend/connecting_norway"
+alias frontend="cd ~/src/connecting-norway/frontend/src"
+alias fd="fdfind"
 # Add the external toolchain for CE system-trunk-main to PATH:
 if [ -d "/tandberg/system/bin" ]; then
     PATH="${PATH}:/tandberg/system/bin"
@@ -189,3 +195,6 @@ bindkey "^[[1;5B" down-line-or-beginning-search              # Ctrl + Cursor Dow
 # typed commands to be appended to the history file (the latter is like specifying
 # INC_APPEND_HISTORY, which should be turned off if this option is in effect).
 setopt sharehistory
+
+# fzf
+source /usr/share/doc/fzf/examples/completion.zsh
